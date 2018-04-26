@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.itstep</groupId>
+  <artifactId>TimeTable</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>TimeTable</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.version>4.12</junit.version>
+    <lombok.version>1.16.20</lombok.version>
+    <jackson.version>2.9.4</jackson.version>
+    <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+    <spring-context.version>5.0.2.RELEASE</spring-context.version>
+    <hibernate.version>5.2.13.Final</hibernate.version>
+  </properties>
+
+  <dependencies>
+  
+  <!-- LOMBOK -->
+   <dependency>
+     <groupId>org.projectlombok</groupId>
+     <artifactId>lombok</artifactId>
+     <version>${lombok.version}</version>
+     <scope>provided</scope>
+ </dependency>
+  
+  <!-- JSON -->
+   <dependency>
+     <groupId>com.fasterxml.jackson.core</groupId>
+     <artifactId>jackson-databind</artifactId>
+     <version>${jackson.version}</version>
+ </dependency>
+ 
+  <!-- SPRING-BOOT -->
+   <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-autoconfigure</artifactId>
+     <version>${spring-boot.version}</version>
+ </dependency>
+  
+   <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter</artifactId>
+     <version>${spring-boot.version}</version>
+ </dependency>
+   <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-test</artifactId>
+     <version>${spring-boot.version}</version>
+     <scope>test</scope>
+ </dependency>
+   
+   <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-web</artifactId>
+     <version>${spring-boot.version}</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-data-jpa</artifactId>
+    	<version>${spring-boot.version}</version>
+    </dependency>
+    
+  <!-- SPRING-CONTEXT -->
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-context</artifactId>
+     <version>${spring-context.version}</version>
+ </dependency>
+   
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-core</artifactId>
+     <version>${spring-context.version}</version>
+ </dependency>
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-web</artifactId>
+     <version>${spring-context.version}</version>
+ </dependency>
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-webmvc</artifactId>
+     <version>${spring-context.version}</version>
+ </dependency>
+ 
+ <!-- SPRING DATA -->
+ <dependency>
+     <groupId>org.springframework.data</groupId>
+     <artifactId>spring-data-commons</artifactId>
+     <version>1.13.7.RELEASE</version>
+ </dependency>
+  <dependency>
+     <groupId>org.springframework.data</groupId>
+     <artifactId>spring-data-jpa</artifactId>
+     <version>1.11.7.RELEASE</version>
+ </dependency>
+  <dependency>
+     <groupId>org.springframework.data</groupId>
+     <artifactId>spring-data-commons-core</artifactId>
+     <version>1.4.1.RELEASE</version>
+ </dependency>
+ 
+ <!-- JDBC DRIVER -->
+	<dependency>
+    	<groupId>com.h2database</groupId>
+    	<artifactId>h2</artifactId>
+    	<version>1.4.196</version>
+	</dependency>
+	<dependency>
+    	<groupId>postgresql</groupId>
+    	<artifactId>postgresql</artifactId>
+    	<version>9.1-901-1.jdbc4</version>
+	</dependency>
+	
+	<!-- HIKARI -->
+	<dependency>
+    	<groupId>com.zaxxer</groupId>
+    	<artifactId>HikariCP-java9ea</artifactId>
+    	<version>2.6.1</version>
+	</dependency>
+  
+   	<!-- JUNIT -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+	<!-- HIBERNATE -->
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>${hibernate.version}</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-entitymanager</artifactId>
+    	<version>${hibernate.version}</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.hibernate.javax.persistence</groupId>
+    	<artifactId>hibernate-jpa-2.0-api</artifactId>
+    	<version>1.0.1.Final</version>
+	</dependency>
+	
+	<!-- MOCKITO -->
+	<dependency>
+    	<groupId>org.mockito</groupId>
+    	<artifactId>mockito-all</artifactId>
+    	<version>1.10.19</version>
+    	<scope>test</scope>
+	</dependency>
+	
+  </dependencies>
+</project>
