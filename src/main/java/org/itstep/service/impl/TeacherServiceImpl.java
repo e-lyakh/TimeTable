@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class TeacherServiceImpl implements TeacherService {
 
 	@Autowired
-	TeacherDAO teacherDao;
+	TeacherDAO teacherDao;	
 
 	public Teacher save(Teacher teacher) {
 		if (teacherDao.getOne(teacher.getLogin()) == null) {

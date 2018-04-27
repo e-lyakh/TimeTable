@@ -44,8 +44,10 @@ public class SubjectControllerTest {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
+		
 		subject = new Subject();
 		subject.setName("Java");
+		
 	}
 
 	@Test
@@ -64,23 +66,34 @@ public class SubjectControllerTest {
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testUpdate() throws URISyntaxException {
+		
+		Mockito.when(subjectService.update(Mockito.any(Subject.class))).thenReturn(subject);
+		
+		RequestEntity<Subject> request = new RequestEntity<Subject>(subject, HttpMethod.PUT, new URI("/subject"));		
+		ResponseEntity<Subject> response = restTemplate.exchange(request, Subject.class);
+		
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		Mockito.verify(subjectService, Mockito.times(1)).update(Mockito.any(Subject.class));
+		
 	}
 
 	@Test
 	public void testGetOne() throws URISyntaxException {
+		
 		Mockito.when(subjectService.get(Mockito.anyString())).thenReturn(subject);
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("name", subject.getName());
 		
-		RequestEntity<String> request = new RequestEntity<String>(headers, HttpMethod.GET, new URI("/subject/get-one"));
+		RequestEntity request = new RequestEntity(headers, HttpMethod.GET, new URI("/subject/get-one/"));
 		ResponseEntity<Subject> response = restTemplate.exchange(request, Subject.class);
 
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		Mockito.verify(subjectService, Mockito.times(1)).get(Mockito.anyString());
 
 		assertEquals("Java", response.getBody().getName());
+		
 	}
 
 	@Test
@@ -89,7 +102,7 @@ public class SubjectControllerTest {
 		Mockito.doNothing().when(subjectService).delete(Mockito.any(Subject.class));
 
 		RequestEntity<Subject> request = new RequestEntity<Subject>(subject, HttpMethod.DELETE, new URI("/subject"));
-		ResponseEntity response = restTemplate.exchange(request, HttpStatus.class);
+		ResponseEntity response = restTemplate.exchange(request, Subject.class);
 
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		Mockito.verify(subjectService, Mockito.times(1)).delete(Mockito.any(Subject.class));

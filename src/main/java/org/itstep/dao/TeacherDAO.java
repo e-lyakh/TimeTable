@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TeacherDAO {
 
-	@Autowired
+	@Autowired	
 	HibernateUtil hiber;
 
 	public Teacher save(Teacher teacher) {

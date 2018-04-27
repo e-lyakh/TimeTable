@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(path = "/lesson")
 public class LessonController {
 
-	@Autowired
+	@Autowired	
 	LessonService lessonService;
 
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = {
@@ -54,13 +54,13 @@ public class LessonController {
 		return new ResponseEntity(HttpStatus.BAD_REQUEST);
 	}
 
-	@GetMapping(path = "/get-by-period", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-	ResponseEntity<List<Lesson>> findAllByStartTime(@RequestHeader Long startPeriod, @RequestHeader Long endPeriod) {
-		List<Lesson> lessons = lessonService.findAllByStartTime(startPeriod, endPeriod);
+	@GetMapping(path = "/get-by-period", consumes = { MediaType.ALL_VALUE }, produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
+	ResponseEntity<List<Lesson>> findAllByStartTime(@RequestHeader Long start, @RequestHeader Long end) { // WTF: with startPeriod and endPeriod doesn't work?!
+		List<Lesson> lessons = lessonService.findAllByStartTime(start, end);
 		if (lessons != null) {
 			return new ResponseEntity<List<Lesson>>(lessons, HttpStatus.OK);
 		}
-		return new ResponseEntity(HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<List<Lesson>>(HttpStatus.BAD_REQUEST);
 	}
 
 	@DeleteMapping (consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.TEXT_PLAIN_VALUE })
